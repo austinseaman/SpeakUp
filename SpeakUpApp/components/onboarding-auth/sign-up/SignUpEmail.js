@@ -21,15 +21,23 @@ const SignUpEmail = ({navigation}) => {
     const Header = styled.Text`
     width: 85%;
     font-family: Avenir;
-    font-style: normal;
     font-weight: 800;
     font-size: 28px;
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 2;
     margin-top: 116px;
-
+    margin-bottom: 0px;
+    `;
+    const TextHeader = styled.Text`
+    font-family: Avenir;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 40px;
+    color: #ffffff;
+    letter-spacing: 0.105751px;
+    margin-top: 25px;
+    flex: 1;
     `;
     const EmailInput = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -42,11 +50,10 @@ const SignUpEmail = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     color: #707070;
-    flex: 3;
-    height: 56px;
     width: 100%;
+    height: 56px;
     padding: 5px;
-    margin: 40px 30px 50px 30px;
+    margin: 10px auto;
     `;
     const TextDisclaimer = styled.Text`
     font-family: Avenir;
@@ -56,13 +63,11 @@ const SignUpEmail = ({navigation}) => {
     line-height: 20px;
     letter-spacing: 0.21px;
     color: #ffffff;
-    width: 315px;
-    height: 40px;
-    left: 32px;
-    top: 321px;    
+    width: 100%;
+    height: 40px;  
     opacity: 0.5;
-    flex: 5;
-    margin-top: 25px;
+    flex: 1;
+    margin: 15px auto 0;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -70,7 +75,7 @@ const SignUpEmail = ({navigation}) => {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 15px;
+    margin: 15px auto 0;
     border: 2px solid #2cc3f8;
     border-radius: 5px;
     `;
@@ -97,19 +102,22 @@ const SignUpEmail = ({navigation}) => {
             paddingRight: 30,
             paddingBottom: 65,
             }}>
-            <Header>
-                    <Text style={{flex: 1}}>Enter your email</Text>
-                    {/* <PhoneInput onChangeText={onChange}>
-                        <InputPlaceholder placeholder='+1 MOBILE NUMBER' />
-                    </PhoneInput> */}
-                    <EmailInput onChangeText={onChangeEmail} />
-                    <TextDisclaimer>{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
+                <Header>
+                    <TextHeader>Enter your email</TextHeader>
                 </Header>
+                    <EmailInput onChangeText={onChangeEmail} value={email}/>
+                    <TextDisclaimer>{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
                 <SignupButton  onPress={() => {
-                    navigation.navigate('SignUpUsernamePassword');
-                }}>
-                    <SignupText>Next</SignupText>
+                        navigation.navigate('SignUpPhone');
+                    }}>
+                        <SignupText>Prev</SignupText>
                 </SignupButton>
+                <SignupButton  onPress={() => {
+                        navigation.navigate('SignUpUsernamePassword');
+                    }}>
+                        <SignupText>Next</SignupText>
+                </SignupButton>
+                
             </LinearGradient>
         </Main>
     )

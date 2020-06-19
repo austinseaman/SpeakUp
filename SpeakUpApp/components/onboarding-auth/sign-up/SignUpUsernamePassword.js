@@ -25,17 +25,25 @@ const SignUpUsernamePassword = ({navigation}) => {
     const Header = styled.Text`
     width: 85%;
     font-family: Avenir;
-    font-style: normal;
     font-weight: 800;
     font-size: 28px;
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 2;
     margin-top: 116px;
-
+    margin-bottom: 0px;
     `;
-    const Input = styled.TextInput`
+    const TextHeader = styled.Text`
+    font-family: Avenir;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 40px;
+    color: #ffffff;
+    letter-spacing: 0.105751px;
+    margin-top: 25px;
+    flex: 1;
+    `;
+    const UserInfoInput = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     text-transform: uppercase;
@@ -46,11 +54,10 @@ const SignUpUsernamePassword = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     color: #707070;
-    flex: 3;
-    height: 56px;
     width: 100%;
+    height: 56px;
     padding: 5px;
-    margin: 40px 30px 50px 30px;
+    margin: 10px auto;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -58,7 +65,7 @@ const SignUpUsernamePassword = ({navigation}) => {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 15px;
+    margin: 15px auto 0;
     border: 2px solid #2cc3f8;
     border-radius: 5px;
     `;
@@ -85,11 +92,15 @@ const SignUpUsernamePassword = ({navigation}) => {
             paddingBottom: 65,
             }}>
                 <Header>
-                    <Text style={{flex: 1}}>Set a username and password</Text>
-                    
-                    <Input onChangeText={onChangeUser} />
-                    <Input onChangeText={onChangePassword} />
+                    <TextHeader>Set a username and password</TextHeader>                    
                 </Header>
+                    <UserInfoInput onChangeText={onChangeUser} value={username}/>
+                    <UserInfoInput onChangeText={onChangePassword} value={password}/>
+                <SignupButton  onPress={() => {
+                        navigation.navigate('SignUpEmail');
+                    }}>
+                        <SignupText>Prev</SignupText>
+                </SignupButton>
                 <SignupButton  onPress={() => {
                     navigation.navigate('SignUpEmergency');
                 }}>

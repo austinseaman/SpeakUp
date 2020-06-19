@@ -5,10 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 const SignUpGroups = ({navigation}) => {
-    let screenWidth = Dimensions.get('window').width;
-    // const [ emergencyFullName, setEmergencyFullName ] = useState('FULL NAME');
 
-    // const onChangeEmergencyName = emergencyFullName => setEmergencyFullName(emergencyFullName)
 
     const Main = styled.View`
     flex: 1;
@@ -27,9 +24,18 @@ const SignUpGroups = ({navigation}) => {
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 2;
-    margin-top: 116px;
-
+    flex: 1;
+    margin-top: 56px;
+    `;
+    const TextHeader = styled.Text`
+    font-family: Avenir;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 40px;
+    color: #ffffff;
+    letter-spacing: 0.105751px;
+    margin-top: 25px;
+    flex: 1;
     `;
     const Input = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -42,7 +48,7 @@ const SignUpGroups = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     color: #707070;
-    flex: 3;
+    flex: 1;
     height: 56px;
     width: 100%;
     padding: 5px;
@@ -81,17 +87,16 @@ const SignUpGroups = ({navigation}) => {
             paddingBottom: 65,
             }}>
                 <View>
-                <Text style={{color: 'red', fontSize: 26, marginBottom: 100}}>
+                <Text style={{color: 'red', fontSize: 26, marginTop: 50, marginBottom: 5}}>
                         Need Search for Group
                     </Text>
                 </View>
-
                 <Header>
-                    <Text style={{flex: 1}}>Join a Group</Text>
-                    <Input onChangeText={onChangeEmergencyName} />
+                    <Input onChangeText={onChangeSearchForGroup} />
+                    <TextHeader>Join a Group</TextHeader>
                 </Header>
                 <View>
-                    <Text style={{color: 'red', fontSize: 26, marginBottom: 100}}>
+                    <Text style={{color: 'red', fontSize: 26}}>
                         groups shown here
                     </Text>
                 </View>

@@ -31,11 +31,10 @@ const SignUpEmergency = ({navigation}) => {
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 2;
-    margin-top: 116px;
-
+    flex: 1;
+    margin: 116px 30px 0px;
     `;
-    const Input = styled.TextInput`
+    const EmergencyInput = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     text-transform: uppercase;
@@ -46,11 +45,30 @@ const SignUpEmergency = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     color: #707070;
-    flex: 3;
     height: 56px;
     width: 100%;
-    padding: 5px;
-    margin: 40px 30px 50px 30px;
+    padding: 5px 15px;
+    margin: 10px auto;
+    `;
+    const AddContactButton = styled.TouchableOpacity`
+    opacity: 0.5;
+    border: 1px dashed #FFFFFF;
+    border-radius: 10px;
+    height: 56px;
+    width: 100%;
+    margin: 10px auto;
+    `;
+    const AddContactText = styled.Text`
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.94px;
+    padding: 22px 25px;
+    justify-content: center;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -58,7 +76,7 @@ const SignUpEmergency = ({navigation}) => {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 15px;
+    margin: 15px auto 0;
     border: 2px solid #2cc3f8;
     border-radius: 5px;
     `;
@@ -85,17 +103,24 @@ const SignUpEmergency = ({navigation}) => {
             paddingBottom: 65,
             }}>
                 <Header>
-                    <Text style={{flex: 1}}>Set an emergency contact(s)</Text>
-                    
-                    <Input onChangeText={onChangeEmergencyName} />
-                    <Input onChangeText={onChangeEmergencyPhone} />
-                    <Input onChangeText={onChangeEmergencyEmail} />
+                    <Text>Set an emergency contact(s)</Text>                    
                 </Header>
+                    <EmergencyInput onChangeText={onChangeEmergencyName} value={emergencyFullName} />
+                    <EmergencyInput onChangeText={onChangeEmergencyPhone} value={emergencyPhoneNumber} />
+                    <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
                 <View>
-                    <Text style={{color: 'red', fontSize: 26, marginBottom: 100}}>
-                        need to add toggle for another contact
-                    </Text>
+                    <AddContactButton >
+                            <AddContactText  style={{color: 'red'}} >ADD ANOTHER CONTACT    
+                               <Text style={{fontSize: 26, lineHeight: 30}} >           &oplus;</Text>
+
+                            </AddContactText>
+                    </AddContactButton>
                 </View>
+                <SignupButton  onPress={() => {
+                        navigation.navigate('SignUpUsernamePassword');
+                    }}>
+                        <SignupText>Prev</SignupText>
+                </SignupButton>
                 <SignupButton  onPress={() => {
                     navigation.navigate('SignUpGroups');
                 }}>

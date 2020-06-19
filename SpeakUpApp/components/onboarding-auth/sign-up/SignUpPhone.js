@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TextInput, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -10,12 +10,14 @@ const SignUpPhone = ({navigation}) => {
     const [ phoneNumber, setPhoneNumber ] = useState('+1 MOBILE NUMBER');
     const onChangePhone = phone => setPhone(phone)
 
-    const [ pickerData, setPickerData ] = useState('');
-
+    // const phoneRef = useRef(undefined);
+    // const [ pickerData, setPickerData ] = useState('');
+    const [phoneValue, setPhoneValue] = useState(null)
+    const [isValidNumber, setIsValidNumber] = useState(false)
+    const phoneRef = useRef(undefined);
     onPressFlag = () => {
         myCountryPicker.open();
     };
-
     selectCountry = (country) => {
     phone.selectCountry(country.iso2);
     };
@@ -28,7 +30,7 @@ const SignUpPhone = ({navigation}) => {
     background-color: #242633;
     opacity: 1;
     `;
-    const HeaderView = styled.View`
+    const Header = styled.Text`
     width: 85%;
     font-family: Avenir;
     font-style: normal;
@@ -36,24 +38,22 @@ const SignUpPhone = ({navigation}) => {
     font-size: 28px;
     line-height: 40px;
     letter-spacing: 0.105751px;
+    color: #ffffff;
+    flex: 1;
     margin-top: 116px;
-    margin-bottom: 25px;
-    border: 2px red;
     `;
     const TextHeader = styled.Text`
     font-family: Avenir;
-    font-style: normal;
     font-weight: 800;
     font-size: 28px;
     line-height: 40px;
+    color: #ffffff;
     letter-spacing: 0.105751px;
-    margin-top: 116px;
-    margin-bottom: 25px;
+    margin-top: 25px;
     flex: 1;
     `;
     const InputView = styled.View`
     flex: 1;
-
     `;
     const PhoneInputEntry = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -66,9 +66,10 @@ const SignUpPhone = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     color: #707070;
-    width: 315px;
+    width: 100%;
     height: 56px;
     padding: 5px;
+    flex: 1;
     `;
     const TextDisclaimer = styled.Text`
     font-family: Avenir;
@@ -78,15 +79,16 @@ const SignUpPhone = ({navigation}) => {
     line-height: 20px;
     letter-spacing: 0.21px;
     color: #ffffff;
-    width: 315px;
+    width: 100%;
     height: 40px;
-    left: 32px;
-    top: 321px;    
     opacity: 0.5;
-    margin-top: 100px;
-    flex: 4;
+    margin: 10px auto;
+    flex: 1;
     `;
     const PhoneInputView = styled.View`
+    background-color: #dedede;
+    padding: 15px 10px;
+    border-radius: 5px;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -94,7 +96,7 @@ const SignUpPhone = ({navigation}) => {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 15px;
+    margin: 15px auto 0;
     border: 2px solid #2cc3f8;
     border-radius: 5px;
     `;
@@ -108,6 +110,18 @@ const SignUpPhone = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     `;
+    const ValidNumber = styled.Text`
+    color: #666;
+    text-transform: uppercase;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.94px;
+    padding-top: 2px;
+    
+    `;
     return (
         <Main>
             <LinearGradient
@@ -120,30 +134,27 @@ const SignUpPhone = ({navigation}) => {
             paddingRight: 30,
             paddingBottom: 65,
             }}>
-                <HeaderView>
-                    <TextHeader style={{ color: '#fff'}}>Enter your phone number</TextHeader>
-                    <TextHeader  style={{ fontSize: 20, marginBottom: 15, color: '#2cc3f8'}}>{"\n"}or NEXT to use email</TextHeader>
-                </HeaderView>
-                <InputView >
+                <Header>
+                    <TextHeader>Enter your phone number</TextHeader>
+                    <TextHeader  style={{ fontSize: 20, color: '#2cc3f8'}}>{"\n"}or NEXT to use email</TextHeader>
+                </Header>
+                {/* <InputView >
                     <PhoneInputEntry  value={phoneNumber} onChangeText={onChangePhone} />
-                </InputView>
-                <View>
-                    <TextDisclaimer >{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
-                </View>
-                <PhoneInputView>
-                    <PhoneInput ref={phoneRef} 
-                        onPressFlag={onPressFlag} />
-                    <ModalPickerImage
-                        ref={(ref) => {
-                            myCountryPicker = ref;
-                        }}
-                        data={pickerData}
-                        onChange={(country) => {
-                            selectCountry(country);
-                        }}
-                        cancelText="Cancel"
+                </InputView> */}
+                <TextHeader  style={{ fontSize: 20, color: 'red'}}>{"\n"}need to figure out how to get phone keyboard to pop up...update components? See warnings.</TextHeader>
+                <PhoneInputView>                     
+                        <PhoneInput
+                            ref={phoneRef}
+                            onChangePhoneNumber={value => {
+                            setPhoneValue(value);
+                            setIsValidNumber(phoneRef.current.isValidNumber())
+                            }} 
                         />
+                        <ValidNumber>ENTER HERE: Is Valid Number: {isValidNumber ? 'Yes' : 'No'}</ValidNumber>
                 </PhoneInputView>
+                {/* <View> */}
+                    <TextDisclaimer >{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
+                {/* </View> */}
                 <SignupButton onPress={() => {
                     navigation.navigate('SignUpEmail');
                 }}>
