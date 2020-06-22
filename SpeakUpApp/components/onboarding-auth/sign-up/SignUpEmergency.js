@@ -94,7 +94,7 @@ const SignUpEmergency = ({navigation}) => {
     padding: 22px 25px;
     justify-content: center;
     `;
-    const TextDisclaimer = styled.Text`
+    const Spacer = styled.Text`
     font-family: Avenir;
     font-style: normal;
     font-weight: 500;
@@ -147,7 +147,6 @@ const SignUpEmergency = ({navigation}) => {
                     <EmergencyInput onChangeText={onChangeEmergencyPhone} value={emergencyPhoneNumber} />
                     <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
                 <View>
-                    
                     { toggled ?
                     <AddContactButton onPress={() => {
                         toggle()
@@ -164,7 +163,8 @@ const SignUpEmergency = ({navigation}) => {
                     </>
                     }
                 </View>
-                    <TextDisclaimer style={{color: 'yellow', fontSize: 20}}>{"\n"}For some reason this text is required for this to not all sit at the bottom </TextDisclaimer>
+                <Spacer> </Spacer>
+
                 <SignupButton  onPress={() => {
                         navigation.navigate('SignUpUsernamePassword');
                     }}>

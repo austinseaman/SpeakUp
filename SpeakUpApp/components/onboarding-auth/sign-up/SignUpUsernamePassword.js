@@ -57,7 +57,7 @@ const SignUpUsernamePassword = ({navigation}) => {
     padding: 5px;
     margin: 10px auto;
     `;
-    const TextDisclaimer = styled.Text`
+    const Spacer = styled.Text`
     font-family: Avenir;
     font-style: normal;
     font-weight: 500;
@@ -108,11 +108,11 @@ const SignUpUsernamePassword = ({navigation}) => {
                 </Header>
                     <UserInfoInput onChangeText={onChangeUser} value={username}/>
                     <UserInfoInput onChangeText={onChangePassword} value={password}/>
-                    <TextDisclaimer style={{color: 'yellow', fontSize: 20}}>{"\n"}For some reason this text is required for this to not all sit at the bottom </TextDisclaimer>
+                    <Spacer> </Spacer>
                 <SignupButton  onPress={() => {
-                        navigation.navigate('SignUpEmail');
-                    }}>
-                        <SignupText>Prev</SignupText>
+                    navigation.navigate('SignUpEmail');
+                }}>
+                    <SignupText>Prev</SignupText>
                 </SignupButton>
                 <SignupButton  onPress={() => {
                     navigation.navigate('SignUpEmergency');

@@ -26,7 +26,7 @@ const SignUpGroups = ({navigation}) => {
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 1;
+
     margin-top: 56px;
     `;
     const TextHeader = styled.Text`
@@ -37,7 +37,6 @@ const SignUpGroups = ({navigation}) => {
     color: #ffffff;
     letter-spacing: 0.105751px;
     margin-top: 25px;
-    flex: 1;
     `;
     const Input = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -56,13 +55,27 @@ const SignUpGroups = ({navigation}) => {
     padding: 5px;
     margin: 40px 30px 50px 30px;
     `;
+    const Spacer = styled.Text`
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;  
+    opacity: 0.5;
+    flex: 1;
+    margin: 15px auto 0;
+    `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 15px;
+    margin-top: auto;
     border: 2px solid #2cc3f8;
     border-radius: 5px;
     `;
@@ -83,25 +96,26 @@ const SignUpGroups = ({navigation}) => {
             style={{
             width: '100%',
             flex: 1,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             paddingLeft: 30,
             paddingRight: 30,
             paddingBottom: 65,
             }}>
                 <View>
-                <Text style={{color: 'red', fontSize: 26, marginTop: 50, marginBottom: 5}}>
-                        Need Search for Group
+                    <Text style={{color: 'red', fontSize: 26, marginTop: 80, marginBottom: 5}}>
+                            Need Search for Group
                     </Text>
                 </View>
                 <Header>
                     <Input onChangeText={onChangeSearchForGroup} />
                     <TextHeader>Join a Group</TextHeader>
                 </Header>
-                <View>
-                    <Text style={{color: 'red', fontSize: 26}}>
-                        groups shown here
+                <ScrollView>
+                    <Text style={{color: 'red', fontSize: 26, marginTop: 20}}>
+                    ***MAP GROUPS HERE***
                     </Text>
-                </View>
+                    <Spacer> </Spacer>
+                </ScrollView>
                 <SignupButton  onPress={() => {
                     {/* navigation.navigate('****'); */}
                     navigation.navigate(' ');

@@ -15,12 +15,12 @@ const SignUpPhone = ({navigation}) => {
     const [phoneValue, setPhoneValue] = useState(null)
     const [isValidNumber, setIsValidNumber] = useState(false)
     const phoneRef = useRef(undefined);
-    onPressFlag = () => {
-        myCountryPicker.open();
-    };
-    selectCountry = (country) => {
-    phone.selectCountry(country.iso2);
-    };
+    // onPressFlag = () => {
+    //     myCountryPicker.open();
+    // };
+    // selectCountry = (country) => {
+    // phone.selectCountry(country.iso2);
+    // };
 
     const Main = styled.View`
     flex: 1;
@@ -141,7 +141,7 @@ const SignUpPhone = ({navigation}) => {
                 {/* <InputView >
                     <PhoneInputEntry  value={phoneNumber} onChangeText={onChangePhone} />
                 </InputView> */}
-                <TextHeader  style={{ fontSize: 20, color: 'red'}}>{"\n"}need to figure out how to get phone keyboard to pop up...update components? See warnings.</TextHeader>
+                <TextHeader  style={{ fontSize: 20, color: 'red'}}>{"\n"}need to figure out how to get phone keyboard to pop up. Any time I click to choose country, getting a warning 'maximum update depth exceeded / infinite loop'</TextHeader>
                 <PhoneInputView>                     
                         <PhoneInput
                             ref={phoneRef}
