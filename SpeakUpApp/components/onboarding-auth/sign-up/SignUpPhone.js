@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TextInput, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import PhoneInput, { ModalPickerImage } from 'react-native-phone-input';
+import PhoneInput from '@nandorojo/react-native-phone-input';
 // import ModalPickerImage from './ModalPickerImage';
 
 const SignUpPhone = ({navigation}) => {
@@ -145,10 +145,10 @@ const SignUpPhone = ({navigation}) => {
                 <PhoneInputView>                     
                         <PhoneInput
                             ref={phoneRef}
-                            onChangePhoneNumber={value => {
+                            /* onChangePhoneNumber={value => {
                             setPhoneValue(value);
                             setIsValidNumber(phoneRef.current.isValidNumber())
-                            }} 
+                            }}  */
                         />
                         <ValidNumber>ENTER HERE: Is Valid Number: {isValidNumber ? 'Yes' : 'No'}</ValidNumber>
                 </PhoneInputView>

@@ -14,6 +14,14 @@ const SignUpEmergency = ({navigation}) => {
     const onChangeEmergencyPhone = emergencyPhoneNumber => setEmergencyPhoneNumber(emergencyPhoneNumber)
     const onChangeEmergencyEmail = emergencyEmail => setEmergencyEmail(emergencyEmail)
 
+    const [ toggled, setToggled ] = useState(true)
+
+    const toggle = () => {
+        setToggled(prev => {
+            return !prev
+        })
+    }
+
     const Main = styled.View`
     flex: 1;
     align-items: center;
@@ -50,6 +58,22 @@ const SignUpEmergency = ({navigation}) => {
     padding: 5px 15px;
     margin: 10px auto;
     `;
+    const EmergencyInputTopSpace = styled.TextInput`
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.94px;
+    color: #707070;
+    height: 56px;
+    width: 100%;
+    padding: 5px 15px;
+    margin: 30px auto 10px;
+    `;
     const AddContactButton = styled.TouchableOpacity`
     opacity: 0.5;
     border: 1px dashed #FFFFFF;
@@ -69,6 +93,20 @@ const SignUpEmergency = ({navigation}) => {
     letter-spacing: 0.94px;
     padding: 22px 25px;
     justify-content: center;
+    `;
+    const TextDisclaimer = styled.Text`
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    opacity: 0.5;
+    margin: 10px auto;
+    flex: 1;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -109,13 +147,24 @@ const SignUpEmergency = ({navigation}) => {
                     <EmergencyInput onChangeText={onChangeEmergencyPhone} value={emergencyPhoneNumber} />
                     <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
                 <View>
-                    <AddContactButton >
+                    
+                    { toggled ?
+                    <AddContactButton onPress={() => {
+                        toggle()
+                        }}>
                             <AddContactText  style={{color: 'red'}} >ADD ANOTHER CONTACT    
                                <Text style={{fontSize: 26, lineHeight: 30}} >           &oplus;</Text>
-
                             </AddContactText>
                     </AddContactButton>
+                    :
+                    <>
+                    <EmergencyInputTopSpace onChangeText={onChangeEmergencyName} value={emergencyFullName} />
+                    <EmergencyInput onChangeText={onChangeEmergencyPhone} value={emergencyPhoneNumber} />
+                    <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
+                    </>
+                    }
                 </View>
+                    <TextDisclaimer style={{color: 'yellow', fontSize: 20}}>{"\n"}For some reason this text is required for this to not all sit at the bottom </TextDisclaimer>
                 <SignupButton  onPress={() => {
                         navigation.navigate('SignUpUsernamePassword');
                     }}>

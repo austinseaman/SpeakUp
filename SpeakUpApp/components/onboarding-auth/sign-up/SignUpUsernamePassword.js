@@ -5,8 +5,6 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 const SignUpUsernamePassword = ({navigation}) => {
-    let screenWidth = Dimensions.get('window').width;
-
     const [ username, setUsername ] = useState('USERNAME');
     const [ password, setPassword ] = useState('PASSWORD');
 
@@ -59,6 +57,20 @@ const SignUpUsernamePassword = ({navigation}) => {
     padding: 5px;
     margin: 10px auto;
     `;
+    const TextDisclaimer = styled.Text`
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.21px;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;  
+    opacity: 0.5;
+    flex: 1;
+    margin: 15px auto 0;
+    `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
@@ -96,6 +108,7 @@ const SignUpUsernamePassword = ({navigation}) => {
                 </Header>
                     <UserInfoInput onChangeText={onChangeUser} value={username}/>
                     <UserInfoInput onChangeText={onChangePassword} value={password}/>
+                    <TextDisclaimer style={{color: 'yellow', fontSize: 20}}>{"\n"}For some reason this text is required for this to not all sit at the bottom </TextDisclaimer>
                 <SignupButton  onPress={() => {
                         navigation.navigate('SignUpEmail');
                     }}>

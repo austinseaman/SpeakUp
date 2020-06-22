@@ -5,7 +5,6 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 const SignUpEmail = ({navigation}) => {
-    let screenWidth = Dimensions.get('window').width;
     const [ email, setEmail ] = useState('EMAIL');
     const onChangeEmail = email => setEmail(email)
 
@@ -116,8 +115,7 @@ const SignUpEmail = ({navigation}) => {
                         navigation.navigate('SignUpUsernamePassword');
                     }}>
                         <SignupText>Next</SignupText>
-                </SignupButton>
-                
+                </SignupButton>    
             </LinearGradient>
         </Main>
     )

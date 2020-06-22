@@ -5,6 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 const SignUpGroups = ({navigation}) => {
+    const [ search, setSearch ] = useState('');
+    const onChangeSearchForGroup = search => setSearch(search)
 
 
     const Main = styled.View`
@@ -101,7 +103,8 @@ const SignUpGroups = ({navigation}) => {
                     </Text>
                 </View>
                 <SignupButton  onPress={() => {
-                    navigation.navigate('****');
+                    {/* navigation.navigate('****'); */}
+                    navigation.navigate(' ');
                 }}>
                     <SignupText>Next</SignupText>
                 </SignupButton>
