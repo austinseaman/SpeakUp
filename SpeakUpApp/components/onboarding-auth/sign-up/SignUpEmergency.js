@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, TextInput, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 
 const SignUpEmergency = ({navigation}) => {
-    let screenWidth = Dimensions.get('window').width;
     const [ emergencyFullName, setEmergencyFullName ] = useState('FULL NAME');
     const [ emergencyPhoneNumber, setEmergencyPhoneNumber ] = useState('PHONE NUMBER');
     const [ emergencyEmail, setEmergencyEmail ] = useState('EMAIL');
@@ -14,24 +13,35 @@ const SignUpEmergency = ({navigation}) => {
     const onChangeEmergencyPhone = emergencyPhoneNumber => setEmergencyPhoneNumber(emergencyPhoneNumber)
     const onChangeEmergencyEmail = emergencyEmail => setEmergencyEmail(emergencyEmail)
 
-    const [ toggled, setToggled ] = useState(true)
+//TOGGLE WAS FOR ORIGINAL DESIGN, PROBABLY NO LONGER NEEDED
+    // const [ toggled, setToggled ] = useState(true)
+    // const toggle = () => {
+    //     setToggled(prev => {
+    //         return !prev
+    //     })
+    // }
 
-    const toggle = () => {
-        setToggled(prev => {
-            return !prev
-        })
+    const AlertWindow = () => {
+        Alert.alert(
+            'Contact added',
+            'Press OK to add more',
+            {
+                text: "OK",
+                onPress: () => navigation.navigate('SignUpEmergency')
+            },
+        )
     }
 
     const Main = styled.View`
     flex: 1;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     width: 100%;
     background-color: #242633;
     opacity: 1;
     `;
     const Header = styled.Text`
-    width: 85%;
+    width: 100%;
     font-family: Avenir;
     font-style: normal;
     font-weight: 800;
@@ -39,8 +49,7 @@ const SignUpEmergency = ({navigation}) => {
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 1;
-    margin: 116px 30px 0px;
+    margin: 116px auto 25px;
     `;
     const EmergencyInput = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -56,23 +65,10 @@ const SignUpEmergency = ({navigation}) => {
     height: 56px;
     width: 100%;
     padding: 5px 15px;
-    margin: 10px auto;
+    margin: 10px auto 0;
     `;
-    const EmergencyInputTopSpace = styled.TextInput`
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.94px;
-    color: #707070;
-    height: 56px;
-    width: 100%;
-    padding: 5px 15px;
-    margin: 30px auto 10px;
+    const InputView = styled.View`
+    justify-content: flex-start;
     `;
     const AddContactButton = styled.TouchableOpacity`
     opacity: 0.5;
@@ -80,7 +76,7 @@ const SignUpEmergency = ({navigation}) => {
     border-radius: 10px;
     height: 56px;
     width: 100%;
-    margin: 10px auto;
+    margin: 50px auto 0;
     `;
     const AddContactText = styled.Text`
     color: #ffffff;
@@ -94,18 +90,9 @@ const SignUpEmergency = ({navigation}) => {
     padding: 22px 25px;
     justify-content: center;
     `;
-    const Spacer = styled.Text`
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.21px;
-    color: #ffffff;
+    const ButtonView = styled.View`
+    justify-content: flex-end;
     width: 100%;
-    height: 40px;
-    opacity: 0.5;
-    margin: 10px auto;
     flex: 1;
     `;
     const SignupButton = styled.TouchableOpacity`
@@ -135,7 +122,7 @@ const SignUpEmergency = ({navigation}) => {
             style={{
             width: '100%',
             flex: 1,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             paddingLeft: 30,
             paddingRight: 30,
             paddingBottom: 65,
@@ -143,10 +130,12 @@ const SignUpEmergency = ({navigation}) => {
                 <Header>
                     <Text>Set an emergency contact(s)</Text>                    
                 </Header>
+                <InputView>
                     <EmergencyInput onChangeText={onChangeEmergencyName} value={emergencyFullName} />
                     <EmergencyInput onChangeText={onChangeEmergencyPhone} value={emergencyPhoneNumber} />
                     <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
-                <View>
+                </InputView>
+                {/* <View>
                     { toggled ?
                     <AddContactButton onPress={() => {
                         toggle()
@@ -162,19 +151,26 @@ const SignUpEmergency = ({navigation}) => {
                     <EmergencyInput onChangeText={onChangeEmergencyEmail} value={emergencyEmail} />
                     </>
                     }
-                </View>
-                <Spacer> </Spacer>
-
-                <SignupButton  onPress={() => {
-                        navigation.navigate('SignUpUsernamePassword');
+                </View> */}
+                <AddContactButton onPress={() => {
+                        toggle()
+                        }}>
+                    <AddContactText onPress = {AlertWindow}>ADD ANOTHER CONTACT    
+                        <Text style={{fontSize: 26, lineHeight: 30}} >           &oplus;</Text>
+                    </AddContactText>
+                </AddContactButton>
+                <ButtonView>
+                    <SignupButton  onPress={() => {
+                            navigation.navigate('SignUpUsernamePassword');
+                        }}>
+                            <SignupText>Prev</SignupText>
+                    </SignupButton>
+                    <SignupButton  onPress={() => {
+                        navigation.navigate('SignUpGroups');
                     }}>
-                        <SignupText>Prev</SignupText>
-                </SignupButton>
-                <SignupButton  onPress={() => {
-                    navigation.navigate('SignUpGroups');
-                }}>
-                    <SignupText>Next</SignupText>
-                </SignupButton>
+                        <SignupText>Next</SignupText>
+                    </SignupButton>
+                </ButtonView>
             </LinearGradient>
         </Main>
     )

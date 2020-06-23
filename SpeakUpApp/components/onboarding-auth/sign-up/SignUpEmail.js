@@ -3,30 +3,28 @@ import { View, Text, TouchableOpacity, ScrollView, TextInput, Dimensions } from 
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 const SignUpEmail = ({navigation}) => {
     const [ email, setEmail ] = useState('EMAIL');
     const onChangeEmail = email => setEmail(email)
 
-
     const Main = styled.View`
     flex: 1;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     width: 100%;
     background-color: #242633;
     opacity: 1;
     `;
     const Header = styled.Text`
-    width: 85%;
+    width: 100%;
     font-family: Avenir;
+    font-style: normal;
     font-weight: 800;
     font-size: 28px;
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    margin-top: 116px;
-    margin-bottom: 0px;
+    margin: 116px auto 25px;
     `;
     const TextHeader = styled.Text`
     font-family: Avenir;
@@ -35,8 +33,7 @@ const SignUpEmail = ({navigation}) => {
     line-height: 40px;
     color: #ffffff;
     letter-spacing: 0.105751px;
-    margin-top: 25px;
-    flex: 1;
+    margin-top: 10px;
     `;
     const EmailInput = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -52,7 +49,7 @@ const SignUpEmail = ({navigation}) => {
     width: 100%;
     height: 56px;
     padding: 5px;
-    margin: 10px auto;
+    margin: 1px auto;
     `;
     const TextDisclaimer = styled.Text`
     font-family: Avenir;
@@ -65,8 +62,13 @@ const SignUpEmail = ({navigation}) => {
     width: 100%;
     height: 40px;  
     opacity: 0.5;
-    flex: 1;
     margin: 15px auto 0;
+    flex: 1;
+    `;
+    const ButtonView = styled.View`
+    justify-content: flex-end;
+    width: 100%;
+    flex: 1;
     `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
@@ -96,7 +98,7 @@ const SignUpEmail = ({navigation}) => {
             style={{
             width: '100%',
             flex: 1,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             paddingLeft: 30,
             paddingRight: 30,
             paddingBottom: 65,
@@ -105,17 +107,24 @@ const SignUpEmail = ({navigation}) => {
                     <TextHeader>Enter your email</TextHeader>
                 </Header>
                     <EmailInput onChangeText={onChangeEmail} value={email}/>
-                    <TextDisclaimer>{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
-                <SignupButton  onPress={() => {
-                        navigation.navigate('SignUpPhone');
-                    }}>
-                        <SignupText>Prev</SignupText>
-                </SignupButton>
-                <SignupButton  onPress={() => {
-                        navigation.navigate('SignUpUsernamePassword');
-                    }}>
-                        <SignupText>Next</SignupText>
-                </SignupButton>    
+                    <TextDisclaimer >{"\n"}By entering and tapping Next, you agree to the &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>Terms,</Text> &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>E-Sign Consent</Text>&nbsp;
+                        & &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>Privacy Policy</Text>.
+                    </TextDisclaimer>
+                <ButtonView>
+                    <SignupButton  onPress={() => {
+                            navigation.navigate('SignUpPhone');
+                        }}>
+                            <SignupText>Prev</SignupText>
+                    </SignupButton>
+                    <SignupButton  onPress={() => {
+                            navigation.navigate('SignUpUsernamePassword');
+                        }}>
+                            <SignupText>Next</SignupText>
+                    </SignupButton>    
+                </ButtonView>
             </LinearGradient>
         </Main>
     )

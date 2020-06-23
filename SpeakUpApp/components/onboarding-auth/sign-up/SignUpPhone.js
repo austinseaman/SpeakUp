@@ -1,37 +1,28 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, TextInput, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import PhoneInput from '@nandorojo/react-native-phone-input';
 // import ModalPickerImage from './ModalPickerImage';
 
 const SignUpPhone = ({navigation}) => {
-    let screenWidth = Dimensions.get('window').width;
     const [ phoneNumber, setPhoneNumber ] = useState('+1 MOBILE NUMBER');
-    const onChangePhone = phone => setPhone(phone)
+    const onChangePhone = phone => setPhone(phone);
 
+    const [phoneValue, setPhoneValue] = useState(null);
+    // const [isValidNumber, setIsValidNumber] = useState(false)
     // const phoneRef = useRef(undefined);
-    // const [ pickerData, setPickerData ] = useState('');
-    const [phoneValue, setPhoneValue] = useState(null)
-    const [isValidNumber, setIsValidNumber] = useState(false)
-    const phoneRef = useRef(undefined);
-    // onPressFlag = () => {
-    //     myCountryPicker.open();
-    // };
-    // selectCountry = (country) => {
-    // phone.selectCountry(country.iso2);
-    // };
 
     const Main = styled.View`
     flex: 1;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     width: 100%;
     background-color: #242633;
     opacity: 1;
     `;
     const Header = styled.Text`
-    width: 85%;
+    width: 100%;
     font-family: Avenir;
     font-style: normal;
     font-weight: 800;
@@ -39,21 +30,16 @@ const SignUpPhone = ({navigation}) => {
     line-height: 40px;
     letter-spacing: 0.105751px;
     color: #ffffff;
-    flex: 1;
-    margin-top: 116px;
+    margin: 116px auto 25px;
     `;
     const TextHeader = styled.Text`
     font-family: Avenir;
     font-weight: 800;
     font-size: 28px;
-    line-height: 40px;
+    line-height: 30px;
     color: #ffffff;
     letter-spacing: 0.105751px;
-    margin-top: 25px;
-    flex: 1;
-    `;
-    const InputView = styled.View`
-    flex: 1;
+    margin-top: 10px;
     `;
     const PhoneInputEntry = styled.TextInput`
     background-color: rgba(255, 255, 255, 0.8);
@@ -69,7 +55,7 @@ const SignUpPhone = ({navigation}) => {
     width: 100%;
     height: 56px;
     padding: 5px;
-    flex: 1;
+    margin: 1px auto;
     `;
     const TextDisclaimer = styled.Text`
     font-family: Avenir;
@@ -85,14 +71,20 @@ const SignUpPhone = ({navigation}) => {
     margin: 10px auto;
     flex: 1;
     `;
+// DELETE PHONE INPUT VIEW STYLING IF REMOVING PACKAGE
     const PhoneInputView = styled.View`
     background-color: #dedede;
     padding: 15px 10px;
     border-radius: 5px;
     `;
+    const ButtonView = styled.View`
+    justify-content: flex-end;
+    width: 100%;
+    flex: 1;
+    `;
     const SignupButton = styled.TouchableOpacity`
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -110,6 +102,7 @@ const SignUpPhone = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     `;
+// DELETE VALID NUMBER STYLING IF REMOVING PACKAGE
     const ValidNumber = styled.Text`
     color: #666;
     text-transform: uppercase;
@@ -120,8 +113,8 @@ const SignUpPhone = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
     padding-top: 2px;
-    
     `;
+    
     return (
         <Main>
             <LinearGradient
@@ -129,7 +122,7 @@ const SignUpPhone = ({navigation}) => {
             style={{
             width: '100%',
             flex: 1,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             paddingLeft: 30,
             paddingRight: 30,
             paddingBottom: 65,
@@ -138,28 +131,32 @@ const SignUpPhone = ({navigation}) => {
                     <TextHeader>Enter your phone number</TextHeader>
                     <TextHeader  style={{ fontSize: 20, color: '#2cc3f8'}}>{"\n"}or NEXT to use email</TextHeader>
                 </Header>
-                {/* <InputView >
-                    <PhoneInputEntry  value={phoneNumber} onChangeText={onChangePhone} />
-                </InputView> */}
-                <TextHeader  style={{ fontSize: 20, color: 'red'}}>{"\n"}need to figure out how to get phone keyboard to pop up. Any time I click to choose country, getting a warning 'maximum update depth exceeded / infinite loop'</TextHeader>
-                <PhoneInputView>                     
+                {/* INPUT BELOW WILL NEED TO TIE TO PHONE BLOCK CAMERON IS BUILDING */}
+                <PhoneInputEntry  value={phoneNumber} onChangeText={onChangePhone} />
+                {/* <PhoneInputView>                     
                         <PhoneInput
                             ref={phoneRef}
-                            /* onChangePhoneNumber={value => {
+                            onChangePhoneNumber={value => {
                             setPhoneValue(value);
                             setIsValidNumber(phoneRef.current.isValidNumber())
-                            }}  */
+                            }}  
                         />
                         <ValidNumber>ENTER HERE: Is Valid Number: {isValidNumber ? 'Yes' : 'No'}</ValidNumber>
-                </PhoneInputView>
-                {/* <View> */}
-                    <TextDisclaimer >{"\n"}By entering and tapping Next, you agree to the Terms, E-Sign Consent & Privacy Policy</TextDisclaimer>
-                {/* </View> */}
-                <SignupButton onPress={() => {
-                    navigation.navigate('SignUpEmail');
-                }}>
-                    <SignupText>Next</SignupText>
-                </SignupButton>
+                </PhoneInputView> */}
+                    <TextDisclaimer >{"\n"}By entering and tapping Next, you agree to the &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>Terms,</Text> &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>E-Sign Consent</Text>&nbsp;
+                        & &nbsp;
+                        <Text style={{textDecorationLine: 'underline'}}>Privacy Policy</Text>.
+                    </TextDisclaimer>
+                    <TextHeader  style={{ fontSize: 20, color: 'red', marginBottom: 0}}>{"\n"}THE R-N PHONT INPUT PACKAGE IS NOT WORKING. CAMERON GOING TO MAKE A PHONE INPUT BLOCK W/ STATE</TextHeader>
+                    <ButtonView>
+                        <SignupButton onPress={() => {
+                            navigation.navigate('SignUpEmail');
+                        }}>
+                            <SignupText>Next</SignupText>
+                        </SignupButton>
+                </ButtonView>
             </LinearGradient>
         </Main>
     )
