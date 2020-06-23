@@ -75,9 +75,6 @@ const Login = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
   `;
-  const onPress = () => {
-      
-  }
 
   return (
     <Main>
@@ -97,11 +94,12 @@ const Login = ({navigation}) => {
         </Header>
 
         <LoginButton
-          onPress={onPress}
+          onPress = {() => {
+            navigation.navigate('PhoneLogin')
+          }}
         >
           <LoginText>Login</LoginText>
         </LoginButton>
-
         <SignupButton>
           <SignupText>Sign Up</SignupText>
         </SignupButton>
@@ -109,5 +107,7 @@ const Login = ({navigation}) => {
     </Main>
   );
 };
+          
+
 
 export default Login;
