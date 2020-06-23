@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Animated, StatusBar} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
+import PhoneLogin from './PhoneLogin';
 
 
 const Login = ({navigation}) => {
@@ -74,6 +75,9 @@ const Login = ({navigation}) => {
     line-height: 19px;
     letter-spacing: 0.94px;
   `;
+  const onPress = () => {
+      
+  }
 
   return (
     <Main>
@@ -92,7 +96,9 @@ const Login = ({navigation}) => {
           Your voice matters, <Text style={{fontWeight: '100'}}>Speak up.</Text>
         </Header>
 
-        <LoginButton>
+        <LoginButton
+          onPress={onPress}
+        >
           <LoginText>Login</LoginText>
         </LoginButton>
 

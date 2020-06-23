@@ -3,8 +3,11 @@ import {View, Text,TextInput, StyleSheet, StatusBar} from 'react-native'
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
+export const LoginContext = React.createContext()
+
 const PhoneLogin = ({navigation}) => {
-const [text, setText] = useState('')
+const [loginText, setLoginText] = useState('USERNAME')
+const [passwordText, setPasswordText] = useState('PASSWORD')
 
 const Main = styled.View`
     flex: 1;
@@ -23,29 +26,6 @@ const Header = styled.Text`
     letter-spacing: 0.105751px;
     color: #ffffff;
 `;
-const UserInput = styled.TextInput`
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-    width:315;
-    height:56;
-    placeholder:'username';
-    background: rgba(255, 255, 255, 0.8);
-`
-const PasswordInput = styled.TextInput`
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-    width:315;
-    height:56;
-    placeholder:'password';
-    secure-text-entry:{true}
-    background: rgba(255, 255, 255, 0.8);
-`
 const LoginButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
@@ -91,19 +71,43 @@ const LoginText = styled.Text`
                     paddingBottom: 65,
                     }}>
                 <Header>Enter your username and password</Header>
-                <UserInput />
-                <PasswordInput />
+                <LoginText>
+                    <TextInput
+                        style = {{
+                            width:315, 
+                            height:56, 
+                            background: rgba(255, 255, 255, 0.8)
+                        }}
+                        setLoginText = {text => setLoginText(text)}
+                        value = {loginText}
+                    />
+                    </LoginText>
+                    <LoginText>
+                        <TextInput
+                            style = {{
+                                width:315, 
+                                height:56, 
+                                background: rgba(255, 255, 255, 0.8)
+                            }}
+                            setPasswordText = {text => setPasswordText(text)}
+                            value = {passwordText}
+                        />
+                    </LoginText>
+               
                 <LoginButton>
                     <LoginText>Login</LoginText>
                 </LoginButton>
             </LinearGradient>
         </Main>
-    )
+)
 };
+
+export default PhoneLogin;
+
+
 
           
            
-export default PhoneLogin;
             
             
 
