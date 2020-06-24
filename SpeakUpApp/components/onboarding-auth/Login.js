@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Animated, StatusBar} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import PhoneLogin from './PhoneLogin';
 
 
 const Login = ({navigation}) => {

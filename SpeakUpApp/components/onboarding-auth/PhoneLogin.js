@@ -28,7 +28,7 @@ const Header = styled.Text`
     margin-left:auto;
     margin-right:auto;
 `;
-const LoginButton = styled.TouchableOpacity`
+const NextButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -107,25 +107,29 @@ const SignupText = styled.Text`
                         onChangeText = {passwordText => setPasswordText(passwordText)}
                         value = {passwordText}
                         />
-                <LoginButton>
+                <NextButton
+                    onPress = {() => {
+                        navigation.navigate('LoginLanding')
+                      }}
+                >
                     <LoginText>Login</LoginText>
-                </LoginButton>
+                </NextButton>
                 <SignupText>
                     <SignupText>Don't have an account yet?</SignupText>
                     <Text style = {{flexDirection:'row', color:'lightblue'}}> Sign Up</Text>
                 </SignupText>
+            </LinearGradient>
+        </Main>
+    )
+};
                 
                 
                  
                
 
                         
-            </LinearGradient>
-        </Main>
                    
                 
-    )
-    };
                     
                    
                         
