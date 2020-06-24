@@ -46,10 +46,10 @@ const SignUpPhone = ({navigation}) => {
     line-height: 30px;
     color: #ffffff;
     letter-spacing: 0.105751px;
-    margin-top: 10px;
+    margin: 10px auto;
   `;
   const PhoneInputEntry = styled.TextInput`
-    background: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
     font-family: Avenir;
     font-style: normal;
@@ -75,7 +75,7 @@ const SignUpPhone = ({navigation}) => {
     width: 100%;
     height: 40px;
     opacity: 0.5;
-    margin: 0px auto;
+    margin: 15px auto 0;
     flex: 0.3;
     /* border: 2px solid red; */
   `;
@@ -150,7 +150,8 @@ const SignUpPhone = ({navigation}) => {
         <PhoneInputEntry
           value={phoneNumber}
           onChangeText={text => onChangePhoneNumber(text)}
-          onFocus={() => setKeyboardToggle(prev => true)}
+          /* onFocus={() => setKeyboardToggle(prev => true)} */
+          keyboardType="number-pad"
         />
         {/* </PhoneInputView> */}
         {/* <PhoneInputView>                     

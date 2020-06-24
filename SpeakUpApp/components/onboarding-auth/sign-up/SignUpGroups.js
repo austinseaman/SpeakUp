@@ -8,76 +8,75 @@ const SignUpGroups = ({navigation}) => {
     const [ search, setSearch ] = useState('');
     const onChangeSearchForGroup = search => setSearch(search)
 
-
     const Main = styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: #242633;
-    opacity: 1;
+        flex: 1;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        background-color: #242633;
+        opacity: 1;
     `;
     const Header = styled.Text`
-    width: 100%;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 28px;
-    line-height: 40px;
-    letter-spacing: 0.105751px;
-    color: #ffffff;
-    margin: 30px auto 25px;
+        width: 100%;
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 40px;
+        letter-spacing: 0.105751px;
+        color: #ffffff;
+        margin: 30px auto 25px;
     `;
     const TextHeader = styled.Text`
-    font-family: Avenir;
-    font-weight: 800;
-    font-size: 28px;
-    line-height: 40px;
-    color: #ffffff;
-    letter-spacing: 0.105751px;
-    margin-top: 10px;
+        font-family: Avenir;
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 40px;
+        color: #ffffff;
+        letter-spacing: 0.105751px;
+        margin-top: 10px;
     `;
     const Input = styled.TextInput`
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.94px;
-    color: #707070;
-    flex: 1;
-    height: 56px;
-    width: 100%;
-    padding: 5px;
-    margin: 40px 30px 50px 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: 0.94px;
+        color: #707070;
+        flex: 1;
+        height: 56px;
+        width: 100%;
+        padding: 5px;
+        margin: 40px 30px 50px 30px;
     `;
     const ButtonView = styled.View`
-    justify-content: flex-end;
-    width: 100%;
-    flex: 1;
+        justify-content: flex-end;
+        width: 100%;
+        flex: 1;
     `;
     const SignupButton = styled.TouchableOpacity`
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: 15px auto 0;
-    border: 2px solid #2cc3f8;
-    border-radius: 5px;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 15px auto 0;
+        border: 2px solid #2cc3f8;
+        border-radius: 5px;
     `;
     const SignupText = styled.Text`
-    color: #2cc3f8;
-    text-transform: uppercase;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.94px;
+        color: #2cc3f8;
+        text-transform: uppercase;
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: 0.94px;
     `;
     return (
         <Main>

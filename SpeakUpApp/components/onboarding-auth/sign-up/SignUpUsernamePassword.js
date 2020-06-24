@@ -38,7 +38,7 @@ const SignUpUsernamePassword = ({navigation}) => {
     line-height: 40px;
     color: #ffffff;
     letter-spacing: 0.105751px;
-    margin-top: 25px;
+    margin: 10px auto;
     flex: 1;
     `;
     const UserInfoInput = styled.TextInput`
@@ -55,7 +55,7 @@ const SignUpUsernamePassword = ({navigation}) => {
     width: 100%;
     height: 56px;
     padding: 5px;
-    margin: 10px auto;
+    margin: 1px auto 10px;
     `;
     const ButtonView = styled.View`
     justify-content: flex-end;
