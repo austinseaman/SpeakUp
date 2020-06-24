@@ -7,16 +7,17 @@ import {
   StatusBar,
   Dimensions,
   Image,
+  Animated,
 } from 'react-native';
 import styled from 'styled-components/native';
-
-import OnboardingScrollIndicator from './OnboardingScrollIndicator.js';
-import {set} from 'react-native-reanimated';
+import OnboardingSlide from './OnboardingSlide.js';
 
 const OnboardingSlider = ({navigation}) => {
   let screenWidth = Dimensions.get('window').width;
   let count = 0;
-  const [countState, setCountState] = useState(1);
+
+  const scrollX = new Animated.Value(0);
+  let position = Animated.divide(scrollX, screenWidth);
 
   const scrollRef = useRef();
 
@@ -34,45 +35,6 @@ const OnboardingSlider = ({navigation}) => {
   const HorizScrollView = styled.ScrollView`
     width: 100%;
     height: 100%;
-  `;
-  const ScrollPanel = styled.View`
-    flex: 1;
-    align-items: flex-start;
-    justify-content: flex-end;
-
-    width: ${screenWidth}px;
-    padding-top: 7%;
-    padding-bottom: 7%;
-  `;
-  const ScrollHeader = styled.Text`
-    margin-top: 10%;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 27px;
-
-    padding-left: 30px;
-    padding-right: 30px;
-
-    color: #ffffff;
-  `;
-  const ScrollText = styled.Text`
-    margin-top: 3%;
-    font-family: Avenir;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-
-    padding-left: 30px;
-    padding-right: 30px;
-
-    letter-spacing: 0.21px;
-
-    color: #ffffff;
-
-    opacity: 0.5;
   `;
   const OptionsView = styled.View`
     flex-direction: row;
@@ -94,36 +56,45 @@ const OnboardingSlider = ({navigation}) => {
     letter-spacing: 0.94px;
     text-transform: uppercase;
   `;
-  const ScrollImg = styled.View`
-    width: 100%;
-
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-
-    /* border: 2px solid red; */
-  `;
-  const ScrollIndicatorView = styled.View`
+  const ScrollIndicatorContainer = styled.View`
     flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     flex: 1;
     margin-left: 20%;
     margin-right: 20%;
   `;
 
+  const data = [
+    {
+      header: 'Create a movement.',
+      text:
+        'Create groups, plan protests, and gain members to get your voice heard.',
+      img: require('../../assets/img/onboarding1.png'),
+      key: 1,
+    },
+    {
+      header: 'Stay informed.',
+      text:
+        'Get updated with news developing in your area, make posts, ping po.ice, safe and danger zones.',
+      img: require('../../assets/img/onboarding2.png'),
+      key: 2,
+    },
+    {
+      header: 'Be safe. Stay private.',
+      text:
+        'In-app location of members in your group at a protest, messaging and more privacy.',
+      img: require('../../assets/img/onboarding3.png'),
+      key: 3,
+    },
+  ];
+
   function scrollToNext() {
-    if (countState === 3) {
+    if (count === 2) {
       navigation.navigate('Login');
     } else {
-      setCountState(countState + 1);
-      scrollRef.current.scrollTo({x: screenWidth * countState});
-    }
-  }
-
-  function scrollListener(e) {
-    let pos = e.nativeEvent.contentOffset.x;
-    if (pos === 0) {
-    } else if (pos === screenWidth) {
-    } else if (pos === screenWidth * 2) {
+      count++;
+      scrollRef.current.scrollTo({x: screenWidth * count});
     }
   }
 
@@ -135,41 +106,15 @@ const OnboardingSlider = ({navigation}) => {
         pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
         decelerationRate="fast"
-        scrollEventThrottle={200}
+        scrollEventThrottle={16}
+        onScroll={Animated.event([
+          {nativeEvent: {contentOffset: {x: scrollX}}},
+        ])}
         ref={scrollRef}
-        onScroll={scrollListener}>
-        <ScrollPanel key={1}>
-          <ScrollImg>
-            <Image source={require('../../assets/img/onboarding1.png')} />
-          </ScrollImg>
-          <ScrollHeader>Create a movement.</ScrollHeader>
-          <ScrollText>
-            Create groups, plan protests, and gain members to get your voice
-            heard.
-          </ScrollText>
-        </ScrollPanel>
-
-        <ScrollPanel key={2}>
-          <ScrollImg>
-            <Image source={require('../../assets/img/onboarding2.png')} />
-          </ScrollImg>
-          <ScrollHeader>Stay informed.</ScrollHeader>
-          <ScrollText>
-            Get updated with news developing in your area, make posts, ping
-            police, safe and danger zones.
-          </ScrollText>
-        </ScrollPanel>
-
-        <ScrollPanel key={3}>
-          <ScrollImg style={{paddingLeft: 0, paddingRight: 0}}>
-            <Image source={require('../../assets/img/onboarding3.png')} />
-          </ScrollImg>
-          <ScrollHeader>Be safe. Stay private.</ScrollHeader>
-          <ScrollText>
-            In-app location of members in your group at a protest, messaging and
-            more privacy.
-          </ScrollText>
-        </ScrollPanel>
+        useNativeDriver={true}>
+        {data.map(item => {
+          return <OnboardingSlide {...item} />;
+        })}
       </HorizScrollView>
 
       <OptionsView>
@@ -185,11 +130,48 @@ const OnboardingSlider = ({navigation}) => {
             Skip
           </OptionsText>
         </TouchableOpacity>
-        <ScrollIndicatorView>
-          <OnboardingScrollIndicator id={0} />
-          <OnboardingScrollIndicator id={1} />
-          <OnboardingScrollIndicator id={2} />
-        </ScrollIndicatorView>
+        <ScrollIndicatorContainer>
+          {data.map((item, index) => {
+            let opacity = position.interpolate({
+              inputRange: [index - 1, index, index + 1],
+              outputRange: [0.5, 1, 0.5],
+              extrapolate: 'clamp',
+            });
+            let borderWidth = position.interpolate({
+              inputRange: [index - 1, index, index + 1],
+              outputRange: [0, 3, 0],
+              extrapolate: 'clamp',
+            });
+
+            return (
+              <Animated.View
+                key={index}
+                style={{
+                  alignSelf: 'center',
+                  justifyContent: 'center',
+                  width: 20,
+                  height: 20,
+                  borderWidth,
+                  borderRadius: 20,
+                  opacity,
+                  borderColor: '#EA8239',
+                }}>
+                <Animated.View
+                  key={index}
+                  style={{
+                    alignSelf: 'center',
+
+                    opacity,
+                    width: 6,
+                    height: 6,
+                    borderRadius: 10,
+                    backgroundColor: '#EA8239',
+                  }}
+                />
+              </Animated.View>
+            );
+          })}
+        </ScrollIndicatorContainer>
         <TouchableOpacity>
           <OptionsText
             style={{
