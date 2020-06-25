@@ -87,6 +87,7 @@ const SignupText = styled.Text`
                     }}
                         onChangeText = {loginText => setLoginText(loginText)}
                         value = {loginText}
+                        placeholder = 'USERNAME'
                     />
                         
                         
@@ -103,10 +104,15 @@ const SignupText = styled.Text`
                         marginRight:'auto',
                         padding:15,
                         marginBottom:245,
+
                     }}
                         onChangeText = {passwordText => setPasswordText(passwordText)}
                         value = {passwordText}
+                        placeholder = 'PASSWORD'
+                        secureTextEntry = {true}
                         />
+    
+                        
                 <NextButton
                     onPress = {() => {
                         navigation.navigate('LoginLanding')
