@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text,TextInput, StyleSheet, StatusBar} from 'react-native'
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const PhoneLogin = ({navigation}) => {
 const [loginText, setLoginText] = useState('USERNAME')
@@ -89,10 +90,6 @@ const SignupText = styled.Text`
                         value = {loginText}
                         placeholder = 'USERNAME'
                     />
-                        
-                        
-    
-                        
                     <TextInput style = {{
                         height:56, 
                         width:315,
@@ -111,8 +108,6 @@ const SignupText = styled.Text`
                         placeholder = 'PASSWORD'
                         secureTextEntry = {true}
                         />
-    
-                        
                 <NextButton
                     onPress = {() => {
                         navigation.navigate('LoginLanding')
@@ -121,13 +116,24 @@ const SignupText = styled.Text`
                     <LoginText>Login</LoginText>
                 </NextButton>
                 <SignupText>
-                    <SignupText>Don't have an account yet?</SignupText>
+                    <SignupText style = {{flexDirection: 'row'}}>Don't have an account yet?</SignupText>
                     <Text style = {{flexDirection:'row', color:'lightblue'}}> Sign Up</Text>
                 </SignupText>
             </LinearGradient>
         </Main>
     )
 };
+
+export default PhoneLogin;
+                    
+                        
+                        
+    
+                        
+    
+                        
+               
+                 
                 
                 
                  
@@ -142,7 +148,6 @@ const SignupText = styled.Text`
                             
                
 
-export default PhoneLogin;
 
 
 
