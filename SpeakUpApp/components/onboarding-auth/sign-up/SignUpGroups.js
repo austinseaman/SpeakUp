@@ -78,6 +78,30 @@ const SignUpGroups = ({navigation}) => {
         line-height: 19px;
         letter-spacing: 0.94px;
     `;
+    const OptionsView = styled.View`
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 100%;
+        height: 60px;
+        margin-bottom: -45px;
+        flex: 1;
+    `;
+    const ButtonTouchableOpacity = styled.TouchableOpacity`
+        align-items: center;
+        justify-content: flex-end;
+        justify-content: space-between;
+        width: 50%;
+    `;
+    const OptionsText = styled.Text`
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: 0.94px;
+        text-transform: uppercase;
+    `;
     return (
         <Main>
             <LinearGradient
@@ -104,18 +128,46 @@ const SignUpGroups = ({navigation}) => {
                     ***MAP GROUPS HERE***
                     </Text>
                 </ScrollView>
-                <ButtonView>
+                {/* <ButtonView>
                     <SignupButton  onPress={() => {
                                 navigation.navigate('SignUpEmergency');
                             }}>
                                 <SignupText>Prev</SignupText>
                         </SignupButton>
                     <SignupButton  
-                    /* onPress={() => {navigation.navigate('****');}}  */
+                    onPress={() => {navigation.navigate('****');}}  
                     >
                         <SignupText>Next</SignupText>
                     </SignupButton>
-                </ButtonView>
+                </ButtonView> */}
+                <OptionsView>
+            <ButtonTouchableOpacity
+              onPress={() => {
+                navigation.navigate('SignUpEmergency');
+              }}>
+              <OptionsText
+                style={{
+                  color: '#ffffff',
+                  opacity: 0.5, 
+                  marginLeft: -130,
+                }}>
+                Prev
+              </OptionsText>
+            </ButtonTouchableOpacity>
+            <ButtonTouchableOpacity
+              /* onPress={() => {
+                  navigation.navigate('***');
+                }}  */
+                >
+              <OptionsText
+                style={{
+                  color: '#EA8239', 
+                  marginRight: -130,
+                }}>
+                Next
+              </OptionsText>
+            </ButtonTouchableOpacity>
+          </OptionsView>
             </LinearGradient>
         </Main>
     )

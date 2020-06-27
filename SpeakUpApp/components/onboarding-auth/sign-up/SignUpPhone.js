@@ -76,7 +76,6 @@ justify-content: flex-end;
 width: 100%;
 flex: 1;
 `;
-// justify-content: ${keyboardToggle ? 'flex-start' : 'flex-end'};
 
 const SignupButton = styled.TouchableOpacity`
 align-items: center;
@@ -97,6 +96,30 @@ font-weight: 800;
 font-size: 14px;
 line-height: 19px;
 letter-spacing: 0.94px;
+`;
+const OptionsView = styled.View`
+flex-direction: row;
+align-items: flex-end;
+justify-content: space-between;
+width: 100%;
+height: 60px;
+margin-bottom: -45px;
+flex: 1;
+`;
+const ButtonTouchableOpacity = styled.TouchableOpacity`
+align-items: center;
+justify-content: flex-end;
+justify-content: space-between;
+width: 50%;
+`;
+const OptionsText = styled.Text`
+font-family: Avenir;
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 19px;
+letter-spacing: 0.94px;
+text-transform: uppercase;
 `;
 
 const SignUpPhone = ({navigation}) => {
@@ -130,7 +153,7 @@ console.log(phoneNumber)
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"} 
           style={{flex: 1}}
-          keyboardVerticalOffset={20}
+          keyboardVerticalOffset={60}
           >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <PhoneInputEntry
@@ -149,14 +172,41 @@ console.log(phoneNumber)
             &nbsp; & &nbsp;
             <Text style={{textDecorationLine: 'underline'}}>Privacy Policy</Text>.
           </TextDisclaimer>
-          <ButtonView>
+          {/* <ButtonView>
             <SignupButton
               onPress={() => {
                 navigation.navigate('SignUpEmail');
               }}>
               <SignupText>Next</SignupText>
             </SignupButton>
-          </ButtonView>
+          </ButtonView> */}
+          <OptionsView>
+            <ButtonTouchableOpacity
+              onPress={() => {
+                navigation.navigate('Login');
+              }}>
+              <OptionsText
+                style={{
+                  color: '#ffffff',
+                  opacity: 0.5, 
+                  marginLeft: -130,
+                }}>
+                Prev
+              </OptionsText>
+            </ButtonTouchableOpacity>
+            <ButtonTouchableOpacity
+              onPress={() => {
+                  navigation.navigate('SignUpEmail');
+                }}>
+              <OptionsText
+                style={{
+                  color: '#EA8239', 
+                  marginRight: -130,
+                }}>
+                Next
+              </OptionsText>
+            </ButtonTouchableOpacity>
+          </OptionsView>
         </KeyboardAvoidingView>
       </LinearGradient>
     </Main>

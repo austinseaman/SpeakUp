@@ -56,7 +56,7 @@ border: 1px dashed #FFFFFF;
 border-radius: 10px;
 height: 56px;
 width: 100%;
-margin: 50px auto 0;
+margin: 20px auto 0;
 `;
 const AddContactText = styled.Text`
 color: #ffffff;
@@ -95,7 +95,30 @@ font-size: 14px;
 line-height: 19px;
 letter-spacing: 0.94px;
 `;
-
+const OptionsView = styled.View`
+flex-direction: row;
+align-items: flex-end;
+justify-content: space-between;
+width: 100%;
+height: 60px;
+margin-bottom: -45px;
+flex: 1;
+`;
+const ButtonTouchableOpacity = styled.TouchableOpacity`
+align-items: center;
+justify-content: flex-end;
+justify-content: space-between;
+width: 50%;
+`;
+const OptionsText = styled.Text`
+font-family: Avenir;
+font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 19px;
+letter-spacing: 0.94px;
+text-transform: uppercase;
+`;
 const SignUpEmergency = ({navigation}) => {
     const [ emergencyFullName, setEmergencyFullName ] = useState('');
     const [ emergencyPhoneNumber, setEmergencyPhoneNumber ] = useState('');
@@ -146,7 +169,7 @@ const SignUpEmergency = ({navigation}) => {
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"} 
                     style={{flex: 1}}
-                    keyboardVerticalOffset={20}
+                    keyboardVerticalOffset={60}
                     >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <InputView>
@@ -191,18 +214,45 @@ const SignUpEmergency = ({navigation}) => {
                             <Text style={{fontSize: 26, lineHeight: 30}} >           &oplus;</Text>
                         </AddContactText>
                     </AddContactButton>
-                    <ButtonView>
-                        {/* <SignupButton  onPress={() => {
+                    {/* <ButtonView>
+                        <SignupButton  onPress={() => {
                                 navigation.navigate('SignUpUsernamePassword');
                             }}>
                             <SignupText>Prev</SignupText>
-                        </SignupButton> */}
+                        </SignupButton>
                         <SignupButton  onPress={() => {
                             navigation.navigate('SignUpGroups');
                         }}>
                             <SignupText>Next</SignupText>
                         </SignupButton>
-                    </ButtonView>
+                    </ButtonView> */}
+                    <OptionsView>
+                        <ButtonTouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('SignUpUsernamePassword');
+                        }}>
+                            <OptionsText
+                                style={{
+                                color: '#ffffff',
+                                opacity: 0.5, 
+                                marginLeft: -130,
+                                }}>
+                                Prev
+                            </OptionsText>
+                        </ButtonTouchableOpacity>
+                        <ButtonTouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('SignUpGroups');
+                            }}>
+                            <OptionsText
+                                style={{
+                                color: '#EA8239', 
+                                marginRight: -130,
+                                }}>
+                                Next
+                            </OptionsText>
+                        </ButtonTouchableOpacity>
+                    </OptionsView>
                 </KeyboardAvoidingView>
             </LinearGradient>
         </Main>

@@ -14,12 +14,9 @@ const OnboardingSlider = ({navigation}) => {
 
   const Main = styled.View`
     flex: 1;
-
     align-items: center;
     justify-content: flex-end;
-
     width: 100%;
-
     background-color: #242633;
     opacity: 1;
   `;
@@ -31,7 +28,6 @@ const OnboardingSlider = ({navigation}) => {
     flex: 1;
     align-items: flex-start;
     justify-content: flex-end;
-
     width: ${screenWidth}px;
     padding-bottom: 100px;
     padding-left: 30px;
@@ -43,7 +39,6 @@ const OnboardingSlider = ({navigation}) => {
     font-weight: 800;
     font-size: 20px;
     line-height: 27px;
-
     color: #ffffff;
   `;
   const ScrollText = styled.Text`
@@ -54,21 +49,16 @@ const OnboardingSlider = ({navigation}) => {
     font-size: 14px;
     line-height: 20px;
     /* or 143% */
-
     letter-spacing: 0.21px;
-
     color: #ffffff;
-
     opacity: 0.5;
   `;
   const OptionsView = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     height: 60px;
-
     padding-left: 30px;
     padding-right: 30px;
   `;
