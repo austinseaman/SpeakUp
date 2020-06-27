@@ -72,6 +72,7 @@ const OnboardingSlider = ({navigation}) => {
         'Create groups, plan protests, and gain members to get your voice heard.',
       img: require('../../assets/img/onboarding1.png'),
       key: 1,
+      id: 1,
     },
     {
       header: 'Stay informed.',
@@ -79,6 +80,7 @@ const OnboardingSlider = ({navigation}) => {
         'Get updated with news developing in your area, make posts, ping po.ice, safe and danger zones.',
       img: require('../../assets/img/onboarding2.png'),
       key: 2,
+      id: 2,
     },
     {
       header: 'Be safe. Stay private.',
@@ -86,6 +88,7 @@ const OnboardingSlider = ({navigation}) => {
         'In-app location of members in your group at a protest, messaging and more privacy.',
       img: require('../../assets/img/onboarding3.png'),
       key: 3,
+      id: 3,
     },
   ];
 
@@ -110,8 +113,7 @@ const OnboardingSlider = ({navigation}) => {
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {x: scrollX}}},
         ])}
-        ref={scrollRef}
-        useNativeDriver={true}>
+        ref={scrollRef}>
         {data.map(item => {
           return <OnboardingSlide {...item} />;
         })}

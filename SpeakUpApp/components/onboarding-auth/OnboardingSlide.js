@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 
-const OnboardingSlide = ({header, text, img, key}) => {
+const OnboardingSlide = ({header, text, img, id}) => {
   let screenWidth = Dimensions.get('window').width;
 
   const ScrollPanel = styled.View`
@@ -55,7 +55,7 @@ const OnboardingSlide = ({header, text, img, key}) => {
   `;
 
   return (
-    <ScrollPanel id={key}>
+    <ScrollPanel id={id}>
       <ScrollImg>
         <Image source={img} />
       </ScrollImg>
