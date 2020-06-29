@@ -117,7 +117,14 @@ const SignupText = styled.Text`
                 </NextButton>
                 <SignupText>
                     <SignupText style = {{flexDirection: 'row'}}>Don't have an account yet?</SignupText>
-                    <Text style = {{flexDirection:'row', color:'lightblue'}}> Sign Up</Text>
+                    <Text style = 
+                    {{flexDirection:'row', 
+                    color:'lightblue'}}
+                    onPress = {() => {
+                        navigation.navigate('SignUp')
+                      }}
+                    >
+                         Sign Up</Text>
                 </SignupText>
             </LinearGradient>
         </Main>
