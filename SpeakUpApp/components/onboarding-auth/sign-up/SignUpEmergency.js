@@ -153,6 +153,13 @@ const SignUpEmergency = ({navigation}) => {
       },
     });
   };
+  const addContactandClear = () => {
+    // need function to add contact to database
+    // .then(() => {
+      AlertWindow();
+      clearInputs();
+    // })
+  }
 
   return (
     <Main>
@@ -215,7 +222,7 @@ const SignUpEmergency = ({navigation}) => {
             onPress={() => {
               toggle();
             }}>
-            <AddContactText onPress={AlertWindow}>
+            <AddContactText onPress={addContactandClear}>
               ADD ANOTHER CONTACT
               <Text style={{fontSize: 26, lineHeight: 30}}> &oplus;</Text>
             </AddContactText>
