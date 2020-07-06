@@ -8,6 +8,8 @@ import SignUpEmail from './components/onboarding-auth/sign-up/SignUpEmail.js';
 import SignUpUsernamePassword from './components/onboarding-auth/sign-up/SignUpUsernamePassword.js';
 import SignUpEmergency from './components/onboarding-auth/sign-up/SignUpEmergency.js';
 import SignUpGroups from './components/onboarding-auth/sign-up/SignUpGroups.js';
+import PhoneLogin from './components/onboarding-auth/PhoneLogin.js';
+import LoginLanding from './components/onboarding-auth/LoginLanding'
 
 const Stack = createStackNavigator();
 
@@ -49,6 +51,15 @@ const App = () => {
           name="SignUpGroups"
           component={SignUpGroups}
           options={{headerShown: false}}
+        <Stack.Screen 
+          name = "PhoneLogin"
+          component = {(PhoneLogin)}
+          options = {{headerShown: false}}
+        />
+        <Stack.Screen 
+          name = "LoginLanding"
+          component = {(LoginLanding)}
+          options = {{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
