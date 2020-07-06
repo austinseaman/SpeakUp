@@ -3,6 +3,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Login from './components/onboarding-auth/Login.js';
 import OnboardingSlider from './components/onboarding-auth/OnboardingSlider.js';
+import PhoneLogin from './components/onboarding-auth/PhoneLogin.js';
+import LoginLanding from './components/onboarding-auth/LoginLanding'
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,16 @@ const App = () => {
           name="Login"
           component={Login}
           options={{headerShown: false}}
+        />
+        <Stack.Screen 
+          name = "PhoneLogin"
+          component = {(PhoneLogin)}
+          options = {{headerShown: false}}
+        />
+        <Stack.Screen 
+          name = "LoginLanding"
+          component = {(LoginLanding)}
+          options = {{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -91,10 +91,12 @@ const Login = ({navigation}) => {
           Your voice matters, <Text style={{fontWeight: '100'}}>Speak up.</Text>
         </Header>
 
-        <LoginButton>
+        <LoginButton
+          onPress={() => {
+            navigation.navigate('PhoneLogin');
+          }}>
           <LoginText>Login</LoginText>
         </LoginButton>
-
         <SignupButton>
           <SignupText>Sign Up</SignupText>
         </SignupButton>
