@@ -77,7 +77,7 @@ const OnboardingSlider = ({navigation}) => {
     {
       header: 'Stay informed.',
       text:
-        'Get updated with news developing in your area, make posts, ping po.ice, safe and danger zones.',
+        'Get updated with news developing in your area, make posts, ping police, safe and danger zones.',
       img: require('../../assets/img/onboarding2.png'),
       key: 2,
       id: 2,
@@ -110,9 +110,10 @@ const OnboardingSlider = ({navigation}) => {
         showsHorizontalScrollIndicator={false}
         decelerationRate="fast"
         scrollEventThrottle={16}
-        onScroll={Animated.event([
-          {nativeEvent: {contentOffset: {x: scrollX}}},
-        ])}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
+          {useNativeDriver: false},
+        )}
         ref={scrollRef}>
         {data.map(item => {
           return <OnboardingSlide {...item} />;
