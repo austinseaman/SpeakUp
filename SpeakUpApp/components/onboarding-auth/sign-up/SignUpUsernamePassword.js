@@ -143,21 +143,10 @@ const SignUpUsernamePassword = ({navigation}) => {
                 value={password}
                 placeholder="PASSWORD"
                 onChangeText={onChangePassword}
+                secureTextEntry={true}
               />
             </View>
           </TouchableWithoutFeedback>
-          {/* <ButtonView>
-                        <SignupButton  onPress={() => {
-                            navigation.navigate('SignUpEmail');
-                        }}>
-                            <SignupText>Prev</SignupText>
-                        </SignupButton>
-                        <SignupButton  onPress={() => {
-                            navigation.navigate('SignUpEmergency');
-                        }}>
-                            <SignupText>Next</SignupText>
-                        </SignupButton>
-                    </ButtonView> */}
           <OptionsView>
             <ButtonTouchableOpacity
               onPress={() => {
