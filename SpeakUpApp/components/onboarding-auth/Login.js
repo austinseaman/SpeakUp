@@ -3,7 +3,6 @@ import {View, Text, TouchableOpacity, Animated, StatusBar} from 'react-native';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 const Login = ({navigation}) => {
   const Main = styled.View`
     flex: 1;
@@ -93,10 +92,9 @@ const Login = ({navigation}) => {
         </Header>
 
         <LoginButton
-          onPress = {() => {
-            navigation.navigate('PhoneLogin')
-          }}
-        >
+          onPress={() => {
+            navigation.navigate('PhoneLogin');
+          }}>
           <LoginText>Login</LoginText>
         </LoginButton>
         <SignupButton>
@@ -106,7 +104,5 @@ const Login = ({navigation}) => {
     </Main>
   );
 };
-          
-
 
 export default Login;
