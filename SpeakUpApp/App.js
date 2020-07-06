@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Login from './components/onboarding-auth/Login.js';
@@ -9,7 +9,7 @@ import SignUpUsernamePassword from './components/onboarding-auth/sign-up/SignUpU
 import SignUpEmergency from './components/onboarding-auth/sign-up/SignUpEmergency.js';
 import SignUpGroups from './components/onboarding-auth/sign-up/SignUpGroups.js';
 import PhoneLogin from './components/onboarding-auth/PhoneLogin.js';
-import LoginLanding from './components/onboarding-auth/LoginLanding'
+import LoginLanding from './components/onboarding-auth/LoginLanding';
 
 const Stack = createStackNavigator();
 
@@ -51,15 +51,16 @@ const App = () => {
           name="SignUpGroups"
           component={SignUpGroups}
           options={{headerShown: false}}
-        <Stack.Screen 
-          name = "PhoneLogin"
-          component = {(PhoneLogin)}
-          options = {{headerShown: false}}
         />
-        <Stack.Screen 
-          name = "LoginLanding"
-          component = {(LoginLanding)}
-          options = {{headerShown: false}}
+        <Stack.Screen
+          name="PhoneLogin"
+          component={PhoneLogin}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="LoginLanding"
+          component={LoginLanding}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

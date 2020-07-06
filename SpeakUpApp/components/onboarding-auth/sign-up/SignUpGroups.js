@@ -175,8 +175,8 @@ const SignUpGroups = ({navigation}) => {
           <TextHeader>Join a Group</TextHeader>
         </Header>
         <GroupScrollView>
-          {dummyData.map(group => (
-            <Group {...group} />
+          {dummyData.map((group, index) => (
+            <Group {...group} key={index + 1} />
           ))}
         </GroupScrollView>
         {/* <ButtonView>

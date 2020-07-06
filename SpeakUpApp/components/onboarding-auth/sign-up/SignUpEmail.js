@@ -55,6 +55,8 @@ const TextInputEntry = styled.TextInput`
   height: 56px;
   padding: 5px;
   margin: 1px auto;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 const TextDisclaimer = styled.Text`
   font-family: Avenir;

@@ -55,6 +55,8 @@ const PhoneInputEntry = styled.TextInput`
   padding: 5px;
   margin: 1px auto;
   border-radius: 5px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 const TextDisclaimer = styled.Text`
   font-family: Avenir;

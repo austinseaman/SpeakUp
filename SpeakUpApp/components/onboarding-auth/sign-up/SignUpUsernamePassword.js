@@ -56,6 +56,8 @@ const UserInfoInput = styled.TextInput`
   height: 56px;
   padding: 5px;
   margin: 1px auto 10px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 const ButtonView = styled.View`
   justify-content: flex-end;

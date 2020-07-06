@@ -97,9 +97,10 @@ const Login = ({navigation}) => {
           }}>
           <LoginText>Login</LoginText>
         </LoginButton>
-        <SignupButton  onPress={() => {
+        <SignupButton
+          onPress={() => {
             navigation.navigate('SignUpPhone');
-          }}/>
+          }}>
           <SignupText>Sign Up</SignupText>
         </SignupButton>
       </LinearGradient>
