@@ -117,13 +117,14 @@ const SignupText = styled.Text`
                 </NextButton>
                 <SignupText>
                     <SignupText style = {{flexDirection: 'row'}}>Don't have an account yet?</SignupText>
-                    <Text style = 
-                    {{flexDirection:'row', 
-                    color:'lightblue'}}
-                    onPress = {() => {
-                        navigation.navigate('SignUp')
-                      }}
-                    >
+                    <Text style = {{
+                        flexDirection:'row', 
+                        color:'lightblue',
+                    }}
+                        onPress = {() => {
+                            navigation.navigate('Signup')
+                          }}
+                        >
                          Sign Up</Text>
                 </SignupText>
             </LinearGradient>
@@ -132,6 +133,7 @@ const SignupText = styled.Text`
 };
 
 export default PhoneLogin;
+                      
                     
                         
                         
