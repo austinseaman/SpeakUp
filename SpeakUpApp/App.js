@@ -51,6 +51,7 @@ const App = () => {
           name="SignUpGroups"
           component={SignUpGroups}
           options={{headerShown: false}}
+          />
         <Stack.Screen 
           name = "PhoneLogin"
           component = {(PhoneLogin)}
